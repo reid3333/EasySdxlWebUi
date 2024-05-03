@@ -4,7 +4,7 @@
 export LANG=ja_JP.UTF-8
 
 # Git のパスを設定
-source "$(dirname "$0")/SetGitPath.sh"
+source "$(dirname $(realpath "$0") )/SetGitPath.sh"
 if [ $? -ne 0 ]; then
     echo "Failed to set Git path"
     exit 1

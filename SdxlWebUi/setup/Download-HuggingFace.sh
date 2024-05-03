@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # スクリプトのディレクトリを取得
-script_dir=$(dirname "$(readlink -f "$0")")
+script_dir=$(dirname "$(realpath "$0")")
 
 # 文字コード設定
 export LANG=ja_JP.UTF-8
