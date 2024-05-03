@@ -2,7 +2,6 @@
 
 # UTF-8 文字コードを設定
 export LANG=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
 
 # 必要なパッケージがインストールされているか確認
 if ! command -v python3 &> /dev/null; then
