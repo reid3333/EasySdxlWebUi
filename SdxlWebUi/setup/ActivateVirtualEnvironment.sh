@@ -23,7 +23,11 @@ if ! python3 -m venv --help &> /dev/null; then
 fi
 
 # 仮想環境ディレクトリの設定
-VIRTUAL_ENV_DIR=${1:-venv}
+if [ ! -z "$1" ]; then
+    VIRTUAL_ENV_DIR=$1
+else
+    VIRTUAL_ENV_DIR=venv
+fi
 
 # 仮想環境の設定とアクティベーション
 if [ ! -d "$VIRTUAL_ENV_DIR" ]; then
