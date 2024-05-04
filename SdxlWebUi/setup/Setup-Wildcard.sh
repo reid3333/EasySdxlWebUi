@@ -6,7 +6,7 @@ SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
 pushd "${SCRIPT_DIR}/../Wildcard"
 
-cp -r "${SCRIPT_DIR}/res/wildcards/*" .
+cp -r ${SCRIPT_DIR}/res/wildcards/* .
 
 download_file() {
     mkdir -p $1
