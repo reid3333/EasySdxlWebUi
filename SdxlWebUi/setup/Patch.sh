@@ -9,7 +9,8 @@ fi
 
 pushd "${script_dir}/lib"
 
-source "${script_dir}/ActivateVirtualEnvironment.sh"
+# 引数を指定しないとこのスクリプトの$1が引き継がれてしまう
+source "${script_dir}/ActivateVirtualEnvironment.sh" ""
 if [ $? -ne 0 ]; then
     popd
     exit $?
