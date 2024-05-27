@@ -3,12 +3,28 @@ chcp 65001 > NUL
 
 pushd %~dp0..
 
+@REM set CONTROLNET_PY=stable-diffusion-webui-forge\extensions-builtin\sd_forge_controlnet\scripts\controlnet.py
+@REM if exist %CONTROLNET_PY%.bak (
+@REM 	echo move /Y %CONTROLNET_PY%.bak %CONTROLNET_PY% > NUL
+@REM 	move /Y %CONTROLNET_PY%.bak %CONTROLNET_PY% > NUL
+@REM )
+
 call %~dp0GitCloneOrPull.bat https://github.com/lllyasviel/stable-diffusion-webui-forge main
 if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
 
-@REM  forge b9705c5
-@REM echo git -C stable-diffusion-webui-forge checkout b9705c5
-@REM git -C stable-diffusion-webui-forge checkout b9705c5 2>NUL
+@REM forge Dora https://github.com/lllyasviel/stable-diffusion-webui-forge/pull/608
+echo git -C stable-diffusion-webui-forge fetch origin pull/608/head:Dora
+git -C stable-diffusion-webui-forge fetch origin pull/608/head:Dora
+if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
+
+@REM forge Dora https://github.com/lllyasviel/stable-diffusion-webui-forge/pull/608
+echo git -C stable-diffusion-webui-forge checkout -f Dora
+git -C stable-diffusion-webui-forge checkout -f Dora
+if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
+
+@REM forge dev2
+@REM echo git -C stable-diffusion-webui-forge checkout dev2
+@REM git -C stable-diffusion-webui-forge checkout dev2
 @REM if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
 
 call %~dp0ActivateVirtualEnvironment.bat venv-forge
