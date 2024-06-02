@@ -21,33 +21,91 @@ EasySdxlWebUi は簡単に SDXL で画像を生成できるようにします。
 
 ## 最近の主な更新
 
-### 2024/04/28
+### 2024/05/27
 
-- [月須和・那々さん](https://twitter.com/nana_tsukisuwa) の `cnlllite-anystyle_v3` が触れば触るほど良いものでしたので、更新時に自動的にダウンロードするようにしました。
-- [TTPLanet_SDXL_Controlnet_Tile_Realistic](https://huggingface.co/TTPlanet/TTPLanet_SDXL_Controlnet_Tile_Realistic) の v2 を `Download\ControlNet\TTPlanet-TTPLanet_SDXL_Controlnet_Tile_Realistic.bat` でダウンロードするようにしました。
+- 新しい CN [`inpaint`](https://x.com/redraw_0/status/1794565370088399328) ＆ [anytest_v3](https://twitter.com/nana_tsukisuwa/status/1793674601412833589) と [IC-Light](https://x.com/Zuntan03/status/1788351424612499533) と [CN 4K アプスケ](https://x.com/Zuntan03/status/1794490257351836092) を組み合わせて、[**雑コラしてみる記事です**](https://twitter.com/Zuntan03/status/1794872656283734107)。
+	- [imgsli での画像の比較（ぜひ 4K を拡大してみてください）](https://imgsli.com/MjY3MjY0/3/0)
 
-### 2024/04/27
+[![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/InpaintH.webp)](https://imgsli.com/MjY3MjY0/3/0)
 
-- `DownloadAll*.bat` の更新漏れを修正しました。
-- [月須和・那々さん](https://twitter.com/nana_tsukisuwa) の `cnlllite-anystyle_v3` をダウンロードする `Download/ControlNet/2vXpSwA7-cnlllite-anystyle_v3.bat` を追加しました。
-	- モデルをダウンロードしたら、ControlNet の `モデル` に `cnlllite-anystyle_v3-step00004000` を設定し `Ending Control Setp` を `0.2 ~ 0.3` にすると、構図を寄せつつ書き換えられます。
+- ドキュメントに『[ControlNet inpaint & anytest で部分書き換え](https://github.com/Zuntan03/EasySdxlWebUi/wiki/ControlNet-inpaint-&-anytest-%E3%81%A7%E9%83%A8%E5%88%86%E6%9B%B8%E3%81%8D%E6%8F%9B%E3%81%88)』を追加しました。
+	- ControlNet の [Kataragi_inpaint](https://twitter.com/redraw_0/status/1794565370088399328) と [anytest_v3](https://twitter.com/nana_tsukisuwa/status/1793674601412833589) で画像の一部分を書き換えます。
+	- ↑ の雑コラの inpaint 部切り出し版です。
 
-|元の画像|CN 設定|参照画像|生成画像|
-|:--:|:--:|:--:|:--:|
-|![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/CnAnyStyle-0.png)|![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/CnAnyStyle-Ui.png)|![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/CnAnyStyle-1.png)|![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/CnAnyStyle-2.png)|
+![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CNIP/4char_upsc.webp)
 
-- LCM LoRA や Lightning LoRA と同様に高速化されつつも、絵への影響が少ないらしい [Hyper-SD LoRA](https://huggingface.co/ByteDance/Hyper-SD) に対応しました。
-	- アップデート時に `SdxlWebUi/Lora/Hyper-SD` に `8steps` 版をダウンロードします。
-		- `Download/Lora/Hyper-SD.bat` で `1, 2, 4steps` 版をダウンロードします。
-	- Easy Prompt Selector に `Hyper-SD Cfg1 設定` のボタンを追加しました。
-		- Cfg1 だと高速ですが、Negative prompt が効きません（だったはず）。
-		- `Apr.26, 2024. 💥💥💥 Our CFG-Preserved Hyper-SD15/SDXL that facilitate negative prompts and larger guidance scales (e.g. 5~10) will be coming soon!!! 💥💥💥` だそうです。  
-		![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/HyperSd-Ui.png)
-	- Geforce RTX 3060 で 896x1152 のバッチサイズ 9 が 40秒ぐらい（平均 4.5秒）で生成されています。
-	- Animagine XL 3.1 との相性が良さそうです。
+### 2024/05/26
 
-|![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/HyperSd-Aqua.webp)|![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/HyperSd-Bocchi.webp)|
-|--|--|
+- ドキュメントに『[ControlNet で高倍率高解像度補助](https://github.com/Zuntan03/EasySdxlWebUi/wiki/ControlNet-%E3%81%A7%E9%AB%98%E5%80%8D%E7%8E%87%E9%AB%98%E8%A7%A3%E5%83%8F%E5%BA%A6%E8%A3%9C%E5%8A%A9)』を追加しました。
+	- ControlNet の [anytest_v3](https://twitter.com/nana_tsukisuwa/status/1793674601412833589) や [852AClone](https://twitter.com/8co28/status/1793460439059485169) を利用することで、高倍率の `高解像度補助`(Hires.fix) を可能にします。  
+- `Download/ControlNet/2vXpSwA7-CN-any.bat` で [`anytest_v3-50000 一式`](https://twitter.com/nana_tsukisuwa/status/1793674601412833589) もダウンロードするようにしました。
+- `Download/ControlNet/kataragi-ControlNet.bat` で [`inpaint の f16 と lora128`](https://x.com/redraw_0/status/1794565370088399328) もダウンロードするようにしました。
+- `Download/ControlNet/controlnet852A.bat` で [852A Clone と Scribble](https://twitter.com/8co28/status/1793460439059485169) をダウンロードするようにしました。
+- `Download/Lora/MayonakaManic-LoRA.bat` で `MN_+Skinny-CurvySliderXL` もダウンロードするようにしました。
+
+### 2024/05/23
+
+- forge の [`DoRA Support`](https://github.com/lllyasviel/stable-diffusion-webui-forge/pull/608) をデフォルトで有効にするようにしました。
+	- 元に戻したい時は `SdxlWebUi/setup/` にある `Checkout-SdxlWebUi-forge-main.bat` を実行してください。
+- forge の dev2 の [不具合修正](https://github.com/lllyasviel/stable-diffusion-webui-forge/pull/755) により、ワークアラウンドの対処を削除しました。
+
+### 2024/05/20
+
+- A1111 の [All perf improvements bundle](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/15821) に対応しました。
+	- 1024x1024 の 6枚生成が 104秒から 94秒に 10秒縮みました。
+		- **ですが [forge の Hyper-SD(8step) の CFG Scale: 1.0 運用](https://github.com/Zuntan03/EasySdxlWebUi/wiki/Forge-%E3%82%92%E9%AB%98%E9%80%9F%E3%81%AA%E5%AE%89%E5%AE%9A%E7%89%88%E3%81%A8%E3%81%97%E3%81%A6%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B#%E9%80%9F%E5%BA%A6%E9%87%8D%E8%A6%96%E3%81%AE%E5%88%A9%E7%94%A8-cfg%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB-10) なら 53秒です。**  
+		**[比較動画](https://twitter.com/Zuntan03/status/1792702913456078878) [DL](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/PerfBundle.mp4)**
+	- `SdxlWebUi/setup/Checkout-SdxlWebUi-a1111-PerfBundle.bat` で切り替えられます。
+		- `SdxlWebUi-a1111-PrecisionHalf.bat` で `--precision half` 付きで起動できます。
+		- 拡張機能がどこまで動作するかは確認していません。
+		- a1111 を更新すると元に戻ります。
+	- **[All perf improvements bundle が fp8 非対応のため](https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/15821#issuecomment-2116681846) fp8 を無効化しています。**
+		- **fp8 を利用するには `SdxlWebUi/config.json` に `"fp8_storage": "Enable for SDXL",` を追加してください。**  
+		a1111 で fp8 を有効にすると複数 LoRA 使用時に最後の LoRA 以外が効かない説があります(2024/05/21)。
+
+## 2024/05/19
+
+- ドキュメントに『[anystyle 系 ControlNet で構図再現](https://github.com/Zuntan03/EasySdxlWebUi/wiki/anystyle-%E7%B3%BB-ControlNet-%E3%81%A7%E6%A7%8B%E5%9B%B3%E5%86%8D%E7%8F%BE)』を追加しました。
+	- 構図を残しつつキャラや背景を変更できる [anystyle](https://twitter.com/nana_tsukisuwa/status/1782186812846543000) 系の ControlNet を比較します。
+- ドキュメントの『[EasySdxlWebUi のカスタマイズ](https://github.com/Zuntan03/EasySdxlWebUi/wiki/EasySdxlWebUi-%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA)』に e621 タグの入力補完について追記しました。
+	- `SdxlWebUi/config.json` に `"tac_tagFile": "e621.csv",` を追加して再起動すると Pony 系モデル用の e621 タグで入力補完できます。  
+	元に戻したい場合は `"tac_tagFile": "danbooru.csv",` にして再起動です。
+
+## 2024/05/18
+
+- [`DoRA Support`](https://github.com/lllyasviel/stable-diffusion-webui-forge/pull/608) の [パッチ](https://patch-diff.githubusercontent.com/raw/lllyasviel/stable-diffusion-webui-forge/pull/608.patch) をあてる `Checkout-SdxlWebUi-forge-Dora.bat` と `Checkout-SdxlWebUi-forge-dev2_Dora.bat` を `SdxlWebUi/setup` に追加しました。
+	- 更新時に元の状態に戻るため、再実行する必要があります。
+	- [Civitai](https://civitai.com/models) で DoRA を探すには、`Filters` で `DoRA` を指定します。
+![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/DoRA.png)
+- 新しい ControlNet の [MistoLine](https://huggingface.co/TheMistoAI/MistoLine) を `Download/ControlNet/TheMistoAI-MistoLine.bat` で追加できるようにしました。
+	- ~~先日の [`Kataragi_lineartXL`](https://twitter.com/redraw_0/status/1789218899315093999) と同様に、ControlNet に線画を入力するか lineart 系のプリプロセッサをご利用ください。~~
+	- 公式の利用方法とは異なりますが、anystyleと同様にプリプロセッサなしの運用で構図を維持しつつキャラを変更したりできるようです。
+
+## 2024/05/17
+
+- ドキュメントに『[Forge を高速な安定版として利用する](https://github.com/Zuntan03/EasySdxlWebUi/wiki/Forge-%E3%82%92%E9%AB%98%E9%80%9F%E3%81%AA%E5%AE%89%E5%AE%9A%E7%89%88%E3%81%A8%E3%81%97%E3%81%A6%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B)』を追加しました。
+	- 更新が落ち着いた Forge を、高速な安定版として利用する方法です。
+- `stable-diffusion-webui-wd14-tagger` を [`picobyte`](https://github.com/picobyte/stable-diffusion-webui-wd14-tagger) さん製から [`Bocchi-Chan2023`](https://github.com/Bocchi-Chan2023/stable-diffusion-webui-wd14-tagger) さん製に変更しました。
+
+## 2024/05/14
+
+- `Download/Model/ebara_pony.bat` でモデルの [`ebara_pony_2.1`](https://huggingface.co/tsukihara/xl_model) をダウンロードするようにしました。
+
+## 2024/05/12
+
+- `Download/Model/ebara_pony.bat` でモデルの [`ebara_pony_2`](https://huggingface.co/tsukihara/xl_model) をダウンロードするようにしました。
+- `Download/Model/loliDiffusion.bat` でモデルの [`Loli Diffusion v1.1 PDXL Lx7`](https://huggingface.co/JosefJilek/loliDiffusion) をダウンロードするようにしました。
+- `Download/ControlNet/kataragi-ControlNet-LineartXL.bat` で ControlNet の [`Kataragi_lineartXL`](https://twitter.com/redraw_0/status/1789218899315093999) をダウンロードするようにしました。
+
+## 2024/05/10
+
+- `Download/ControlNet/2vXpSwA7-CN-any.bat` で [`CN-anytest_v1_fp16.safetensors`](https://twitter.com/nana_tsukisuwa/status/1788261709079257296) をダウンロードするようにしました。
+
+## 2024/05/09
+
+- [IC-Light](https://github.com/lllyasviel/IC-Light) を試せる `IC-Light-Demo.bat` と `IC-Light-DemoBg.bat` を追加しました。
+
+![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/IC-Light.webp)
 
 [過去の更新](https://github.com/Zuntan03/EasySdxlWebUi/wiki/%E9%81%8E%E5%8E%BB%E3%81%AE%E6%9B%B4%E6%96%B0)
 
@@ -83,6 +141,14 @@ EasySdxlWebUi は簡単に SDXL で画像を生成できるようにします。
 - [SDXL 生成画像を SD1.5 画風に寄せる](https://github.com/Zuntan03/EasySdxlWebUi/wiki/SDXL-%E7%94%9F%E6%88%90%E7%94%BB%E5%83%8F%E3%82%92-SD1.5-%E7%94%BB%E9%A2%A8%E3%81%AB%E5%AF%84%E3%81%9B%E3%82%8B)
 	- Animagine 系や Pony 系の SDXL で生成した画像を、`高解像度補助` で SD1.5 モデルの画風に寄せます。  
 	- SDXL と SD1.5 を 組み合わせることで、SD1.5 の資産を SDXL 環境でも活用できるようにします。
+- [Forge を高速な安定版として利用する](https://github.com/Zuntan03/EasySdxlWebUi/wiki/Forge-%E3%82%92%E9%AB%98%E9%80%9F%E3%81%AA%E5%AE%89%E5%AE%9A%E7%89%88%E3%81%A8%E3%81%97%E3%81%A6%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B)
+	- 更新が落ち着いた Forge を、高速な安定版として利用する方法です。
+- [anystyle 系 ControlNet で構図再現](https://github.com/Zuntan03/EasySdxlWebUi/wiki/anystyle-%E7%B3%BB-ControlNet-%E3%81%A7%E6%A7%8B%E5%9B%B3%E5%86%8D%E7%8F%BE)
+	- 構図を残しつつキャラや背景を変更できる [anystyle](https://twitter.com/nana_tsukisuwa/status/1782186812846543000) 系の ControlNet を比較します。
+- [ControlNet で高倍率高解像度補助](https://github.com/Zuntan03/EasySdxlWebUi/wiki/ControlNet-%E3%81%A7%E9%AB%98%E5%80%8D%E7%8E%87%E9%AB%98%E8%A7%A3%E5%83%8F%E5%BA%A6%E8%A3%9C%E5%8A%A9)
+	- ControlNet の [anytest_v3](https://twitter.com/nana_tsukisuwa/status/1793674601412833589) や [852AClone](https://twitter.com/8co28/status/1793460439059485169) を利用することで、高倍率の `高解像度補助`(Hires.fix) を可能にします。
+- [ControlNet inpaint & anytest で部分書き換え](https://github.com/Zuntan03/EasySdxlWebUi/wiki/ControlNet-inpaint-&-anytest-%E3%81%A7%E9%83%A8%E5%88%86%E6%9B%B8%E3%81%8D%E6%8F%9B%E3%81%88)
+	- ControlNet の [Kataragi_inpaint](https://twitter.com/redraw_0/status/1794565370088399328) と [anytest_v3](https://twitter.com/nana_tsukisuwa/status/1793674601412833589) で画像の一部分を書き換えます。
 - [過去の更新](https://github.com/Zuntan03/EasySdxlWebUi/wiki/%E9%81%8E%E5%8E%BB%E3%81%AE%E6%9B%B4%E6%96%B0)
 	- 過去の更新履歴です。
 

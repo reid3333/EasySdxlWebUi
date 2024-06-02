@@ -60,6 +60,11 @@ if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
 call %~dp0Link.bat %SD_DIR%\models\Lora Lora
 if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
 
+@REM LCM Animagine 3.1 LoRA
+call %~dp0Download.bat Lora\lcm lcm-animaginexl-3_1.safetensors ^
+https://huggingface.co/furusu/SD-LoRA/resolve/main/lcm-animaginexl-3_1.safetensors
+if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
+
 @REM Fixhands LoRA
 call %~dp0Download.bat Lora Fixhands_anime_bdsqlsz_V1.safetensors ^
 https://huggingface.co/bdsqlsz/stable-diffusion-xl-anime-5.2/resolve/main/Fixhands_anime_bdsqlsz_V1.safetensors
@@ -144,7 +149,7 @@ if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
 
 @REM https://github.com/butaixianran/Stable-Diffusion-Webui-Civitai-Helper
 @REM https://github.com/zixaphir/Stable-Diffusion-Webui-Civitai-Helper
-call %~dp0GitCloneOrPull.bat https://github.com/butaixianran/Stable-Diffusion-Webui-Civitai-Helper
+call %~dp0GitCloneOrPull.bat https://github.com/zixaphir/Stable-Diffusion-Webui-Civitai-Helper
 if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
 
 call %~dp0GitCloneOrPull.bat https://github.com/Katsuyuki-Karasawa/stable-diffusion-webui-localization-ja_JP
@@ -154,10 +159,13 @@ if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
 @REM call %~dp0GitCloneOrPull.bat https://github.com/arenasys/stable-diffusion-webui-model-toolkit
 @REM if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
 
-call %~dp0Unpatch.bat %~dp0res\wd14-tagger_wd14v3.patch
-call %~dp0GitCloneOrPull.bat https://github.com/picobyte/stable-diffusion-webui-wd14-tagger
+@REM call %~dp0Unpatch.bat %~dp0res\wd14-tagger_wd14v3.patch
+@REM call %~dp0GitCloneOrPull.bat https://github.com/picobyte/stable-diffusion-webui-wd14-tagger
+@REM if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
+@REM call %~dp0Patch.bat %~dp0res\wd14-tagger_wd14v3.patch
+
+call %~dp0GitCloneOrPull.bat https://github.com/Bocchi-Chan2023/stable-diffusion-webui-wd14-tagger
 if %errorlevel% neq 0 ( popd & exit /b %errorlevel% )
-call %~dp0Patch.bat %~dp0res\wd14-tagger_wd14v3.patch
 
 @REM LoraBlockWeight プリセット
 copy /Y %~dp0res\lora_block_weight\lbwpresets.txt sd-webui-lora-block-weight\scripts\ > NUL
