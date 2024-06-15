@@ -23,6 +23,14 @@ if [ $? -ne 0 ]; then
     exit $?
 fi
 
+pip -qq install install jax==0.4.28 jaxlib==0.4.28
+if [ $? -ne 0 ]; then
+    read -p "Install failed. Press any key to continue..." key
+    popd
+    exit $?
+fi
+
+
 pip -qq install tensorflow_io
 if [ $? -ne 0 ]; then
     read -p "Install failed. Press any key to continue..." key
@@ -187,6 +195,12 @@ if [ $? -ne 0 ]; then
     exit $?
 fi
 
+# bash ${SCRIPT_DIR}/GitCloneOrPull.sh https://github.com/Takenoko3333/sd-webui-reuse-seed-plus
+# if [ $? -ne 0 ]; then
+#     popd
+#     exit $?
+# fi
+
 bash ${SCRIPT_DIR}/GitCloneOrPull.sh https://github.com/hako-mikan/sd-webui-supermerger
 if [ $? -ne 0 ]; then
     popd
@@ -206,7 +220,8 @@ if [ $? -ne 0 ]; then
 fi
 
 
-bash ${SCRIPT_DIR}/GitCloneOrPull.sh https://github.com/butaixianran/Stable-Diffusion-Webui-Civitai-Helper
+# bash ${SCRIPT_DIR}/GitCloneOrPull.sh https://github.com/butaixianran/Stable-Diffusion-Webui-Civitai-Helper
+bash ${SCRIPT_DIR}/GitCloneOrPull.sh https://github.com/zixaphir/Stable-Diffusion-Webui-Civitai-Helper
 if [ $? -ne 0 ]; then
     popd
     exit $?
@@ -218,14 +233,21 @@ if [ $? -ne 0 ]; then
     exit $?
 fi
 
-bash ${SCRIPT_DIR}/Unpatch.sh "${SCRIPT_DIR}/res/wd14-tagger_wd14v3.patch"
-bash ${SCRIPT_DIR}/GitCloneOrPull.sh "https://github.com/picobyte/stable-diffusion-webui-wd14-tagger"
+# bash ${SCRIPT_DIR}/Unpatch.sh "${SCRIPT_DIR}/res/wd14-tagger_wd14v3.patch"
+# bash ${SCRIPT_DIR}/GitCloneOrPull.sh "https://github.com/picobyte/stable-diffusion-webui-wd14-tagger"
+# if [ $? -ne 0 ]; then
+#     popd
+#     exit $?
+# fi
+
+# bash ${SCRIPT_DIR}/Patch.sh "${SCRIPT_DIR}/res/wd14-tagger_wd14v3.patch"
+
+
+bash ${SCRIPT_DIR}/GitCloneOrPull.sh "https://github.com/Bocchi-Chan2023/stable-diffusion-webui-wd14-tagger"
 if [ $? -ne 0 ]; then
     popd
     exit $?
 fi
-
-bash ${SCRIPT_DIR}/Patch.sh "${SCRIPT_DIR}/res/wd14-tagger_wd14v3.patch"
 
 cp -f "${SCRIPT_DIR}/res/lora_block_weight/lbwpresets.txt" "sd-webui-lora-block-weight/scripts/"
 if [ $? -ne 0 ]; then
