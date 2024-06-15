@@ -21,6 +21,48 @@ EasySdxlWebUi は簡単に SDXL で画像を生成できるようにします。
 
 ## 最近の主な更新
 
+### 2024/06/12
+
+- `JAX requires ml_dtypes version 0.4.0 or newer; installed version is 0.3.2.` エラーへの対処を入れました。
+	- エラーが出ている場合は、更新時の `更新に時間がかかりますが、安全のために SdxlWebUi\venv-(forge|a1111)\ を削除しますか？` で削除してください。
+
+### 2024/06/09
+
+- forge の [互換性のない更新予告](https://github.com/lllyasviel/stable-diffusion-webui-forge/discussions/801) に備えて、バージョンを固定するようにしました。
+	- [forge CFG1 と、a1111 高速化パッチ適用済の速度差](https://x.com/Zuntan03/status/1792702913456078878)
+	- 『[Forge を高速な安定版として利用する](https://github.com/Zuntan03/EasySdxlWebUi/wiki/Forge-%E3%82%92%E9%AB%98%E9%80%9F%E3%81%AA%E5%AE%89%E5%AE%9A%E7%89%88%E3%81%A8%E3%81%97%E3%81%A6%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B)』
+
+### 2024/06/08
+
+- ドキュメントに『[複数キャラ画像の生成](https://github.com/Zuntan03/EasySdxlWebUi/wiki/%E8%A4%87%E6%95%B0%E3%82%AD%E3%83%A3%E3%83%A9%E7%94%BB%E5%83%8F%E3%81%AE%E7%94%9F%E6%88%90)』を追加しました。
+	- 新 ControlNet の inpaint と anytest で、複数キャラ画像を高打率な txt2img で着実に生成します。  
+
+|[![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/MCHR/MultiCharV.webp)](https://github.com/Zuntan03/EasySdxlWebUi/wiki/%E8%A4%87%E6%95%B0%E3%82%AD%E3%83%A3%E3%83%A9%E7%94%BB%E5%83%8F%E3%81%AE%E7%94%9F%E6%88%90)|[![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/MCHR/MultiChar.webp)](https://github.com/Zuntan03/EasySdxlWebUi/wiki/%E8%A4%87%E6%95%B0%E3%82%AD%E3%83%A3%E3%83%A9%E7%94%BB%E5%83%8F%E3%81%AE%E7%94%9F%E6%88%90)|
+|:--:|:--:|
+
+### 2024/06/05
+
+- anytest_v4 で高難度のポーズを再現してみました。
+	- 海老反りの ControlNet 入力画像は [こちら](https://www.pexels.com/ja-jp/photo/415212/)。
+
+[![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/anytest_v4.webp)](https://x.com/Zuntan03/status/1798496774765613096)
+
+|海老反りの設定|キン肉バスター|
+|:--:|:--:|
+|![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/anytest_v4_setting.png)|[![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/29buster.webp)](https://x.com/Zuntan03/status/1798614237910356436)|
+
+### 2024/06/04
+
+- 画面上部にあるクイック設定の `Extra noise multiplier` を `タグのファイル名` に変更しました。
+	- `danbooru.csv` だと Animagine 系などの Danbooru タグでプロンプトを入力補完し、`e621.csv` だと Pony 系などの e621 タグで入力補完します。
+	![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/e621_tag.png)
+- `Download/ControlNet/2vXpSwA7-CN-any.bat` で [`anytest_v4 LoRA`](https://twitter.com/nana_tsukisuwa/status/1797457796918882623) もダウンロードするようにしました。
+
+Anytest 作例
+|きららジャンプ|百合太極図|
+|:-:|:-:|
+|[![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/kirara_jump.webp)](https://twitter.com/Zuntan03/status/1797045030374506718)|[![](https://raw.githubusercontent.com/wiki/Zuntan03/EasySdxlWebUi/img/CLG/yuri.webp)](https://twitter.com/Zuntan03/status/1796691126956470396)|
+
 ### 2024/05/27
 
 - 新しい CN [`inpaint`](https://x.com/redraw_0/status/1794565370088399328) ＆ [anytest_v3](https://twitter.com/nana_tsukisuwa/status/1793674601412833589) と [IC-Light](https://x.com/Zuntan03/status/1788351424612499533) と [CN 4K アプスケ](https://x.com/Zuntan03/status/1794490257351836092) を組み合わせて、[**雑コラしてみる記事です**](https://twitter.com/Zuntan03/status/1794872656283734107)。
@@ -149,6 +191,8 @@ EasySdxlWebUi は簡単に SDXL で画像を生成できるようにします。
 	- ControlNet の [anytest_v3](https://twitter.com/nana_tsukisuwa/status/1793674601412833589) や [852AClone](https://twitter.com/8co28/status/1793460439059485169) を利用することで、高倍率の `高解像度補助`(Hires.fix) を可能にします。
 - [ControlNet inpaint & anytest で部分書き換え](https://github.com/Zuntan03/EasySdxlWebUi/wiki/ControlNet-inpaint-&-anytest-%E3%81%A7%E9%83%A8%E5%88%86%E6%9B%B8%E3%81%8D%E6%8F%9B%E3%81%88)
 	- ControlNet の [Kataragi_inpaint](https://twitter.com/redraw_0/status/1794565370088399328) と [anytest_v3](https://twitter.com/nana_tsukisuwa/status/1793674601412833589) で画像の一部分を書き換えます。
+- [複数キャラ画像の生成](https://github.com/Zuntan03/EasySdxlWebUi/wiki/%E8%A4%87%E6%95%B0%E3%82%AD%E3%83%A3%E3%83%A9%E7%94%BB%E5%83%8F%E3%81%AE%E7%94%9F%E6%88%90)
+	- 新 ControlNet の inpaint と anytest で、複数キャラ画像を高打率な txt2img で着実に生成します。  
 - [過去の更新](https://github.com/Zuntan03/EasySdxlWebUi/wiki/%E9%81%8E%E5%8E%BB%E3%81%AE%E6%9B%B4%E6%96%B0)
 	- 過去の更新履歴です。
 
