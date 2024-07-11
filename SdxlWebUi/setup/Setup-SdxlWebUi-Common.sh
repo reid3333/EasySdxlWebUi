@@ -23,7 +23,7 @@ if [ $? -ne 0 ]; then
     exit $?
 fi
 
-pip -qq install install jax==0.4.28 jaxlib==0.4.28
+pip -qq install jax==0.4.28 jaxlib==0.4.28
 if [ $? -ne 0 ]; then
     read -p "Install failed. Press any key to continue..." key
     popd
@@ -32,6 +32,13 @@ fi
 
 
 pip -qq install tensorflow_io
+if [ $? -ne 0 ]; then
+    read -p "Install failed. Press any key to continue..." key
+    popd
+    exit $?
+fi
+
+pip -qq install setuptools==69.5.1
 if [ $? -ne 0 ]; then
     read -p "Install failed. Press any key to continue..." key
     popd
