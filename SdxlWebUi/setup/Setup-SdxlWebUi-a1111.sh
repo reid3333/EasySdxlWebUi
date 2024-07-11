@@ -8,7 +8,8 @@ SCRIPT_DIR=$(dirname $(realpath "$0"))
 
 pushd "$SCRIPT_DIR/.."
 
-bash "$SCRIPT_DIR"/GitCloneOrPull.sh https://github.com/AUTOMATIC1111/stable-diffusion-webui
+bash "$SCRIPT_DIR"/GitCloneOrPull.sh https://github.com/AUTOMATIC1111/stable-diffusion-webui master
+git -C stable-diffusion-webui fetch origin pull/15821/head:PerfBundle
 
 source "$SCRIPT_DIR"/ActivateVirtualEnvironment.sh venv-a1111
 
