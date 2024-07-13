@@ -5,7 +5,7 @@ export BRANCH_HYPHEN="${BRANCH//\//-}"
 export LANG=ja_JP.UTF-8
 
 # カレントディレクトリをスクリプトが存在するディレクトリに変更
-cd "$(dirname $(realpath "$0") )"
+cd "$(dirname $(readlink -f "$0") )"
 
 # 必要なディレクトリやファイルが存在するか確認
 if [[ ! -f "/usr/bin/curl" ]]; then
@@ -30,13 +30,13 @@ if [[ -d "SdxlWebUi/venv-a1111" ]]; then
   if [[ "$yes_or_no" == "y" ]]; then
     rm -rf "SdxlWebUi/venv-a1111"
   fi
-else:
+else
 	echo https://www.python.org
 	echo https://github.com/pypa/get-pip
 	echo https://github.com/git-for-windows
 	echo https://github.com/aria2/aria2
 	echo https://github.com/AUTOMATIC1111/stable-diffusion-webui
-	echo.
+	echo ""
 	echo https://huggingface.co/cagliostrolab/animagine-xl-3.1
 	echo https://civitai.com/models/257749
 	echo https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/
@@ -48,7 +48,7 @@ else:
 	echo https://huggingface.co/bdsqlsz/stable-diffusion-xl-anime-5.2
 	echo https://huggingface.co/2vXpSwA7/iroiro-lora
 	echo https://huggingface.co/lllyasviel/sd_control_collection
-	echo.
+	echo ""
 	echo https://github.com/DominikDoom/a1111-sd-webui-tagcomplete
 	echo https://github.com/Bing-su/adetailer
 	echo https://github.com/pkuliyi2015/multidiffusion-upscaler-for-automatic1111
@@ -65,7 +65,7 @@ else:
 	echo https://github.com/blue-pen5805/Stable-Diffusion-Webui-Civitai-Helper
 	echo https://github.com/Katsuyuki-Karasawa/stable-diffusion-webui-localization-ja_JP
 	echo https://github.com/picobyte/stable-diffusion-webui-wd14-tagger
-	echo.
+	echo ""
 	echo https://huggingface.co/spaces/Linaqruf/animagine-xl
 	echo https://br-d.fanbox.cc/posts/5680274
 	echo https://br-d.fanbox.cc/posts/5736236
@@ -83,9 +83,9 @@ else:
   fi
 fi
 
-if [[ -d "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}" ]]; then
-	rm -rf "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}"
-fi
+#if [[ -d "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}" ]]; then
+#	rm -rf "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}"
+#fi
 
 mkdir -p "SdxlWebUi/setup/lib"
 
@@ -94,27 +94,27 @@ if [ $? -ne 0 ]; then
 	exit $?
 fi
 
-pwsh -Command Expand-Archive -Path "SdxlWebUi/setup/lib/EasySdxlWebUi.zip" -DestinationPath "SdxlWebUi/setup/lib" -Force
-if [ $? -ne 0 ]; then
-	exit $?
-fi
+#pwsh -Command Expand-Archive -Path "SdxlWebUi/setup/lib/EasySdxlWebUi.zip" -DestinationPath "SdxlWebUi/setup/lib" -Force
+#if [ $? -ne 0 ]; then
+#	exit $?
+#fi
 
 rm -f "SdxlWebUi/setup/lib/EasySdxlWebUi.zip"
 if [ $? -ne 0 ]; then
 	exit $?
 fi
 
-cp -fr "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}/." .
-if [ $? -ne 0 ]; then
-	exit $?
-fi
+#cp -fr "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}/." .
+#if [ $? -ne 0 ]; then
+#	exit $?
+#fi
 
 ./SdxlWebUi/setup/Setup-SdxlWebUi-a1111.sh
 if [ $? -ne 0 ]; then
 	exit $?
 fi
 
-if [ -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.bat ]; then
+if [ -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.sh ]; then
   ./SdxlWebUi/setup/Setup-SdxlWebUi-Resource.sh
   if [ $? -ne 0 ]; then
     exit $?
@@ -123,19 +123,19 @@ fi
 
 ./SdxlWebUi-a1111.sh
 
-if [ -f SdxlWebUi/setup/SdxlWebUi.bat ]; then
-  rm -f SdxlWebUi/setup/SdxlWebUi.bat
+if [ -f SdxlWebUi/setup/SdxlWebUi.sh ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi.sh
 fi
-if [ -f SdxlWebUi/setup/SdxlWebUi-Update.bat ]; then
-  rm -f SdxlWebUi/setup/SdxlWebUi-Update.bat
+if [ -f SdxlWebUi/setup/SdxlWebUi-Update.sh ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi-Update.sh
 fi
-if [ -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.bat ]; then
-  rm -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.bat
+if [ -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.sh ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.sh
 fi
-if [ -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.bat ]; then
-  rm -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.bat
+if [ -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.sh ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.sh
 fi
-if [ -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.bat ]; then
-  rm -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.bat
+if [ -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.sh ]; then
+  rm -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.sh
 fi
 

@@ -64,3 +64,17 @@ bash SdxlWebUi/setup/Setup-SdxlWebUi-Resource.sh
 nohup bash SdxlWebUi-forge.sh &
 
 echo "Setup completed successfully."
+
+if [ -f SdxlWebUi/setup/SdxlWebUi.sh ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi.sh
+fi
+if [ -f SdxlWebUi/setup/SdxlWebUi-Update.sh ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi-Update.sh
+fi
+if [ -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.sh ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.sh
+fi
+if [ -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.sh ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.sh
+fi
+

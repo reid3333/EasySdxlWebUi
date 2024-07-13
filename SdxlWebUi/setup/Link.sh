@@ -7,6 +7,8 @@ LINK_DST_DIR=$(dirname "$LINK_DST")
 LINK_DST_NAME=$(basename "$LINK_DST")
 LINK_SRC="$2"
 
+echo "$LINK_SRC $LINK_DST"
+
 # LINK_DSTがシンボリックリンクであれば何もせずに終了
 if [ -L "$LINK_DST" ]; then
     exit 0
@@ -27,6 +29,7 @@ if [ -e "$LINK_DST" ]; then
 fi
 
 # シンボリックリンクを作成
+echo "ln -s \"$LINK_SRC\" \"$LINK_DST\""
 ln -s "$LINK_SRC" "$LINK_DST"
 if [ $? -ne 0 ]; then
     read -p "続けるにはエンターキーを押してください"

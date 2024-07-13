@@ -73,25 +73,25 @@ update_json setup/res/ui-config-$SD_NAME.json $SD_DIR/ui-config.json
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!! ${pwd}  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!" 
 ls -altrh
 
-bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/Stable-diffusion" "Model"
+bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/Stable-diffusion" "../../Model"
 if [ $? -ne 0 ]; then
     popd
     exit $?
 fi
 
-bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/VAE" "Vae"
+bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/VAE" "../../Vae"
 if [ $? -ne 0 ]; then
     popd
     exit $?
 fi
 
-bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/embeddings" "Embedding"
+bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/embeddings" "../../Embedding"
 if [ $? -ne 0 ]; then
     popd
     exit $?
 fi
 
-bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/Lora" "Lora"
+bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/Lora" "../../Lora"
 if [ $? -ne 0 ]; then
     popd
     exit $?
@@ -109,13 +109,13 @@ if [ $? -ne 0 ]; then
     exit $?
 fi
 
-bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/ESRGAN" "Upscaler"
+bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/ESRGAN" "../../Upscaler"
 if [ $? -ne 0 ]; then
     popd
     exit $?
 fi
 
-bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/ControlNet" "ControlNet"
+bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/ControlNet" "../../ControlNet"
 if [ $? -ne 0 ]; then
     popd
     exit $?
@@ -128,14 +128,14 @@ if [ $? -ne 0 ]; then
 fi
 
 mkdir -p TaggerDeepDanboooru
-bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/deepdanbooru" "TaggerDeepDanboooru"
+bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/deepdanbooru" "../../TaggerDeepDanboooru"
 if [ $? -ne 0 ]; then
     popd
     exit $?
 fi
 
 mkdir -p TaggerOnnx
-bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/TaggerOnnx" "TaggerOnnx"
+bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/TaggerOnnx" "../../TaggerOnnx"
 if [ $? -ne 0 ]; then
     popd
     exit $?

@@ -135,7 +135,4 @@ fi
 if [ -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.sh ]; then
   rm -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.sh
 fi
-if [ -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.sh ]; then
-  rm -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.sh
-fi
 

@@ -16,8 +16,6 @@ source "$SCRIPT_DIR"/ActivateVirtualEnvironment.sh venv-a1111
 echo "python -m pip install -qq --upgrade pip"
 python -m pip install -qq --upgrade pip
 
-popd
-
 bash -x "$SCRIPT_DIR"/Setup-SdxlWebUi-Common.sh stable-diffusion-webui a1111
 
 pushd "$SCRIPT_DIR/../stable-diffusion-webui/extensions"
