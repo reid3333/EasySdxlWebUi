@@ -36,7 +36,7 @@ else:
 	echo https://github.com/git-for-windows
 	echo https://github.com/aria2/aria2
 	echo https://github.com/AUTOMATIC1111/stable-diffusion-webui
-	echo.
+	echo ""
 	echo https://huggingface.co/cagliostrolab/animagine-xl-3.1
 	echo https://civitai.com/models/257749
 	echo https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/
@@ -48,7 +48,7 @@ else:
 	echo https://huggingface.co/bdsqlsz/stable-diffusion-xl-anime-5.2
 	echo https://huggingface.co/2vXpSwA7/iroiro-lora
 	echo https://huggingface.co/lllyasviel/sd_control_collection
-	echo.
+	echo ""
 	echo https://github.com/DominikDoom/a1111-sd-webui-tagcomplete
 	echo https://github.com/Bing-su/adetailer
 	echo https://github.com/pkuliyi2015/multidiffusion-upscaler-for-automatic1111
@@ -65,7 +65,7 @@ else:
 	echo https://github.com/blue-pen5805/Stable-Diffusion-Webui-Civitai-Helper
 	echo https://github.com/Katsuyuki-Karasawa/stable-diffusion-webui-localization-ja_JP
 	echo https://github.com/picobyte/stable-diffusion-webui-wd14-tagger
-	echo.
+	echo ""
 	echo https://huggingface.co/spaces/Linaqruf/animagine-xl
 	echo https://br-d.fanbox.cc/posts/5680274
 	echo https://br-d.fanbox.cc/posts/5736236
