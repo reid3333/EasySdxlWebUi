@@ -114,7 +114,7 @@ if [ $? -ne 0 ]; then
 	exit $?
 fi
 
-if [ -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.sh ]; then
+if [ -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.bat ]; then
   ./SdxlWebUi/setup/Setup-SdxlWebUi-Resource.sh
   if [ $? -ne 0 ]; then
     exit $?
@@ -123,19 +123,19 @@ fi
 
 ./SdxlWebUi-a1111.sh
 
-if [ -f SdxlWebUi/setup/SdxlWebUi.sh ]; then
-  rm -f SdxlWebUi/setup/SdxlWebUi.sh
+if [ -f SdxlWebUi/setup/SdxlWebUi.bat ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi.bat
 fi
-if [ -f SdxlWebUi/setup/SdxlWebUi-Update.sh ]; then
-  rm -f SdxlWebUi/setup/SdxlWebUi-Update.sh
+if [ -f SdxlWebUi/setup/SdxlWebUi-Update.bat ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi-Update.bat
 fi
-if [ -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.sh ]; then
-  rm -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.sh
+if [ -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.bat ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi-ResetConfig.bat
 fi
-if [ -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.sh ]; then
-  rm -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.sh
+if [ -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.bat ]; then
+  rm -f SdxlWebUi/setup/SdxlWebUi-UpdateConfig.bat
 fi
-if [ -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.sh ]; then
-  rm -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.sh
+if [ -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.bat ]; then
+  rm -f SdxlWebUi/setup/Install-EasySdxlWebUi-a1111.bat
 fi
 
