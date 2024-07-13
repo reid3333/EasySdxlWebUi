@@ -4,7 +4,7 @@ set -e
 
 export LANG=ja_JP.UTF-8
 
-SCRIPT_DIR=$(dirname $(realpath "$0"))
+SCRIPT_DIR=$(dirname $(readlink -f "$0"))
 
 pushd "$SCRIPT_DIR/.."
 
@@ -18,7 +18,7 @@ python -m pip install -qq --upgrade pip
 
 popd
 
-bash "$SCRIPT_DIR"/Setup-SdxlWebUi-Common.sh stable-diffusion-webui a1111
+bash -x "$SCRIPT_DIR"/Setup-SdxlWebUi-Common.sh stable-diffusion-webui a1111
 
 pushd "$SCRIPT_DIR/../stable-diffusion-webui/extensions"
 

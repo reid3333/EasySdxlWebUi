@@ -1,7 +1,7 @@
 #!/bin/bash
 export LANG=ja_JP.UTF-8
 
-script_dir=$(dirname "$(realpath "$0")")
+script_dir=$(dirname "$(readlink -f "$0")")
 
 if [ ! -d "${script_dir}/lib" ]; then
     mkdir "${script_dir}/lib"

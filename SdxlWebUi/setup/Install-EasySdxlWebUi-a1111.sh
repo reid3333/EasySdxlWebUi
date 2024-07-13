@@ -5,7 +5,7 @@ export BRANCH_HYPHEN="${BRANCH//\//-}"
 export LANG=ja_JP.UTF-8
 
 # カレントディレクトリをスクリプトが存在するディレクトリに変更
-cd "$(dirname $(realpath "$0") )"
+cd "$(dirname $(readlink -f "$0") )"
 
 # 必要なディレクトリやファイルが存在するか確認
 if [[ ! -f "/usr/bin/curl" ]]; then
@@ -30,7 +30,7 @@ if [[ -d "SdxlWebUi/venv-a1111" ]]; then
   if [[ "$yes_or_no" == "y" ]]; then
     rm -rf "SdxlWebUi/venv-a1111"
   fi
-else:
+else
 	echo https://www.python.org
 	echo https://github.com/pypa/get-pip
 	echo https://github.com/git-for-windows
@@ -83,9 +83,9 @@ else:
   fi
 fi
 
-if [[ -d "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}" ]]; then
-	rm -rf "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}"
-fi
+#if [[ -d "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}" ]]; then
+#	rm -rf "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}"
+#fi
 
 mkdir -p "SdxlWebUi/setup/lib"
 
@@ -94,22 +94,22 @@ if [ $? -ne 0 ]; then
 	exit $?
 fi
 
-pwsh -Command Expand-Archive -Path "SdxlWebUi/setup/lib/EasySdxlWebUi.zip" -DestinationPath "SdxlWebUi/setup/lib" -Force
-if [ $? -ne 0 ]; then
-	exit $?
-fi
+#pwsh -Command Expand-Archive -Path "SdxlWebUi/setup/lib/EasySdxlWebUi.zip" -DestinationPath "SdxlWebUi/setup/lib" -Force
+#if [ $? -ne 0 ]; then
+#	exit $?
+#fi
 
 rm -f "SdxlWebUi/setup/lib/EasySdxlWebUi.zip"
 if [ $? -ne 0 ]; then
 	exit $?
 fi
 
-cp -fr "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}/." .
-if [ $? -ne 0 ]; then
-	exit $?
-fi
+#cp -fr "SdxlWebUi/setup/lib/EasySdxlWebUi-${BRANCH_HYPHEN}/." .
+#if [ $? -ne 0 ]; then
+#	exit $?
+#fi
 
-./SdxlWebUi/setup/Setup-SdxlWebUi-a1111.sh
+bash -x ./SdxlWebUi/setup/Setup-SdxlWebUi-a1111.sh
 if [ $? -ne 0 ]; then
 	exit $?
 fi

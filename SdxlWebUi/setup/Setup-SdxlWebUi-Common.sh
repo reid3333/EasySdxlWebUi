@@ -70,6 +70,9 @@ update_json() {
 update_json setup/res/config-$SD_NAME.json $SD_DIR/config.json
 update_json setup/res/ui-config-$SD_NAME.json $SD_DIR/ui-config.json
 
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!! ${pwd}  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!" 
+ls -altrh
+
 bash ${SCRIPT_DIR}/Link.sh "$SD_DIR/models/Stable-diffusion" "Model"
 if [ $? -ne 0 ]; then
     popd

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source $(dirname $(realpath "$0"))/Setup-SdxlWebUi-a1111.sh
+source $(dirname $(readlink -f "$0"))/Setup-SdxlWebUi-a1111.sh
 
